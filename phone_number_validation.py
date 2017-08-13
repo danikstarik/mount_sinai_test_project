@@ -1,6 +1,6 @@
 import os.path
 
-from flask import Flask, Response
+from flask import Flask, Response, render_template,send_from_directory
 
 
 app = Flask(__name__)
@@ -25,25 +25,26 @@ def get_file(filename):  # pragma: no cover
 
 
 @app.route('/', methods=['GET'])
-def metrics():  # pragma: no cover
-    content = get_file('phone_number_validation.html')
-    return Response(content, mimetype="text/html")
+def home():  # pragma: no cover
+     return render_template("index.html")
 
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def get_resource(path):  # pragma: no cover
-    mimetypes = {
-        ".css": "text/css",
-        ".html": "text/html",
-        ".js": "application/javascript",
-    }
-    complete_path = os.path.join(root_dir(), path)
-    ext = os.path.splitext(path)[1]
-    mimetype = mimetypes.get(ext, "text/html")
-    content = get_file(complete_path)
-    return Response(content, mimetype=mimetype)
+@app.route('/js/<path:path>')
+def send_js(path):
+    return send_from_directory('static/', path)
+
+# def get_resource(path):  # pragma: no cover
+#     mimetypes = {
+#         ".css": "text/css",
+#         ".html": "text/html",
+#         ".js": "application/javascript",
+#     }
+#     complete_path = os.path.join(root_dir(), path)
+#     ext = os.path.splitext(path)[1]
+#     mimetype = mimetypes.get(ext, "text/html")
+#     content = get_file(complete_path)
+#    
 
 
 if __name__ == '__main__':  # pragma: no cover
-    app.run(port=80)
+    app.run(host='0.0.0.0',debug = True)

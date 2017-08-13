@@ -21,8 +21,7 @@
     }
     else{
       pict_happy.style.display = 'block';
-      pict_sad.style.display = 'none';
-    } ;
+      pict_sad.style.display = 'none';} ;
    
 
                    
