@@ -1,0 +1,8 @@
+{ "bionums": [
+   {
+    "id": 1,
+    "BiologicalConstantSymbol": "c1",
+    "bioDescription": "expression rate constant for IFNa"
+   }
+]
+}
