@@ -1,0 +1,9 @@
+{ "bionums": [
+   {
+    "id": 2,
+    "BiologicalConstantSymbol": "c1",
+    "bioDescription": "Rate of reproduction"
+   }
+]
+}
+
